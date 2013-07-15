@@ -1,16 +1,12 @@
 function SettingsController($scope) {
-  $scope.settings = [
-    {
-      "qtAtivos":"2",
-      "qtCarteiras":"2"
-    },
-    {
-      "qtAtivos":"3",
-      "qtCarteiras":"2"
-    }
-  ];
+  $scope.settings = [];
+
+  function setting(ativos, carteiras) {
+    this.qtAtivos = ativos;
+    this.qtCarteiras = carteiras;
+  }
 
   $scope.addSetting = function() {
-    $scope.settings.push($scope)
+    $scope.settings.push(new setting($scope.settings.qtAtivos, $scope.settings.qtCarteiras));
   }
 }

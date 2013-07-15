@@ -32,7 +32,7 @@
             <div class="control-group">
               <div class="controls">
                 <button class="btn btn-success" id="addConfig"
-                        ng-model="settings">Adicionar</button>
+                        ng-click="addSetting()">Adicionar</button>
               </div>
             </div>
           </fieldset>
@@ -41,7 +41,7 @@
       <div class="span8" id="config_settings">
         <ul>
           <li ng-repeat="setting in settings">
-          {{setting.qtCarteiras}} carteiras com {{setting.qtAtivos}} ativos.
+          {{setting.qtCarteiras}} carteira(s) com {{setting.qtAtivos}} ativo(s) cada.
           </li>
         </ul>
         <button class="btn" id="gerarPortfolio">Gerar Portfolio</button>
