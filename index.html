@@ -41,7 +41,9 @@
       <div class="span8" id="config_settings">
         <ul>
           <li ng-repeat="setting in settings">
-          {{setting.qtCarteiras}} carteira(s) com {{setting.qtAtivos}} ativo(s) cada.
+          {{setting.qtCarteiras}} carteira(s) 
+          com {{setting.qtAtivos}} ativo(s) cada.
+          <a href="" ng-click="removeSetting(setting)">Remover</a>
           </li>
         </ul>
         <button class="btn" id="gerarPortfolio">Gerar Portfolio</button>
@@ -81,6 +83,6 @@
     <!-- bootstrap javascripts -->
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <!-- custom javascripts -->
-    <script src="js/controllers.js"></script>
+    <script src="app/js/controllers.js"></script>
   </body>
 </html>
