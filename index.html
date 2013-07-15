@@ -39,6 +39,7 @@
         </form>
       </div>
       <div class="span8" id="config_settings">
+        <h2>Definição de Carteiras</h1>
         <ul>
           <li ng-repeat="setting in settings">
           {{setting.qtCarteiras}} carteira(s) 
@@ -46,37 +47,17 @@
           <a href="" ng-click="removeSetting(setting)">Remover</a>
           </li>
         </ul>
-        <button class="btn" id="gerarPortfolio">Gerar Portfolio</button>
       </div>
     </div>
 
     <!-- tabela de resultados -->
-    <div id="results">
-      <div>
-        <p id="test_results"></p>
-      </div>
-      <table class="table table-condensed table-hover" id="portfolio_table">
-        <thead>
-          <tr>
-            <th>#Carteira</th>
-            <th>#Ativos</th>
-            <th>Ativos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- linhas onde serão incluídas as carteiras -->
-          <tr>
-            <td>#1</td>
-            <td>2 ativos</td>
-            <td>VAL4,PET4</td>
-          </tr>
-          <tr>
-            <td>#2</td>
-            <td>2 ativos</td>
-            <td>OGX4,SIC4</td>
-          </tr>
-        </tbody>
-      </table>
+    <div id="results" ng-controller="PortfolioController">
+      <ul>
+        <li ng-repeat="setting in settings">
+          {{setting.qtCarteiras}}
+        </li>
+      </ul>
+      <button ng-click="createPortfolio()">Mostrar carteiras</button>
     </div>
     <!-- angular -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
