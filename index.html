@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8" />
+    <title>Portfolios Aleatorios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- styles -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="row-fluid" ng-controller="SettingsController">
+      <div class="span4" id="config_form">
+        <!-- formulario para definição do número de carteiras -->
+        <form class="form-horizontal">
+          <fieldset>
+            <legend>Configure a carteira a ser gerada</legend>
+            <div class="control-group">
+              <label class="control-label" for="qtCarteiras" min="1">Qt de carteiras</label>
+              <div class="controls">
+                <input type="number" id="qtCarteiras" min="1" value="1"
+                        ng-model="settings.qtCarteiras">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="qtAtivos">Qt de ativos</label>
+              <div class="controls">
+                <input type="number" id="qtAtivos" min="1" value="1"
+                        ng-model="settings.qtAtivos">
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <button class="btn btn-success" id="addConfig"
+                        ng-click="addSetting()">Adicionar</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="span8" id="config_settings">
+        <ul>
+          <li ng-repeat="setting in settings">
+          {{setting.qtCarteiras}} carteira(s) com {{setting.qtAtivos}} ativo(s) cada.
+          </li>
+        </ul>
+        <button class="btn" id="gerarPortfolio">Gerar Portfolio</button>
+      </div>
+    </div>
+
+    <!-- tabela de resultados -->
+    <div id="results">
+      <div>
+        <p id="test_results"></p>
+      </div>
+      <table class="table table-condensed table-hover" id="portfolio_table">
+        <thead>
+          <tr>
+            <th>#Carteira</th>
+            <th>#Ativos</th>
+            <th>Ativos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- linhas onde serão incluídas as carteiras -->
+          <tr>
+            <td>#1</td>
+            <td>2 ativos</td>
+            <td>VAL4,PET4</td>
+          </tr>
+          <tr>
+            <td>#2</td>
+            <td>2 ativos</td>
+            <td>OGX4,SIC4</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- angular -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <!-- bootstrap javascripts -->
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <!-- custom javascripts -->
+    <script src="js/controllers.js"></script>
+  </body>
+</html>
