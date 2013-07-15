@@ -5,7 +5,7 @@
     <title>Portfolios Aleatorios</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
   <body>
 
@@ -18,36 +18,32 @@
             <div class="control-group">
               <label class="control-label" for="qtCarteiras" min="1">Qt de carteiras</label>
               <div class="controls">
-                <input type="number" id="qtCarteiras" min="1" value="1" ng-model="settings">
+                <input type="number" id="qtCarteiras" min="1" value="1"
+                        ng-model="settings.qtCarteiras">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="qtAtivos">Qt de ativos</label>
               <div class="controls">
-                <input type="number" id="qtAtivos" min="1" value="1" ng-model="settings">
+                <input type="number" id="qtAtivos" min="1" value="1"
+                        ng-model="settings.qtAtivos">
               </div>
             </div>
             <div class="control-group">
               <div class="controls">
-                <button class="btn btn-success" id="addConfig" ng-model="settings">Adicionar</button>
+                <button class="btn btn-success" id="addConfig"
+                        ng-model="settings">Adicionar</button>
               </div>
             </div>
           </fieldset>
         </form>
       </div>
       <div class="span8" id="config_settings">
-        <table class="table table-condensed" id="config_table">
-          <thead>
-            <tr>
-              <th>Qt Carteiras</th>
-              <th>Qt Ativos</th>
-              <th>Excluir</th>
-            </tr>
-          </thead>
-          <tbody>
-          <!-- rows will be inserted by javascript -->
-          </tbody>
-        </table>
+        <ul>
+          <li ng-repeat="setting in settings">
+          {{setting.qtCarteiras}} carteiras com {{setting.qtAtivos}} ativos.
+          </li>
+        </ul>
         <button class="btn" id="gerarPortfolio">Gerar Portfolio</button>
       </div>
     </div>
@@ -80,8 +76,11 @@
         </tbody>
       </table>
     </div>
-    <!-- scripts -->
+    <!-- angular -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <!-- bootstrap javascripts -->
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <!-- custom javascripts -->
+    <script src="js/controllers.js"></script>
   </body>
 </html>
