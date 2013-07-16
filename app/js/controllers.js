@@ -1,7 +1,5 @@
 'use strict'
 
-var myApp = angular.module('RandomPortfolio', [])
-
 function SettingsController($scope) {
   $scope.settings = [];
 
@@ -24,25 +22,13 @@ function SettingsController($scope) {
     return $scope.settings;
   };
 
-  $scope.iterateSettings = function () {
-    for (var i = 0; i < $scope.settings.length; i++) {
-      alert($scope.settings[i].qtAtivos);
-    }
-  };
-
 };
 
 function PortfolioController($scope) {
-  $scope.getSettings = function () {
+
+  function getSettings() {
     alert("Trigged");
     return SettingsController.getSettings();
-  };
-
-  $scope.iterateSettings = function () {
-    var settings = $scope.getSettings();
-    for (var i = 0; i < settings.length; i++) {
-      alert(settings[i].qtAtivos);
-    }
   };
 
   function createAssetGroup(group_length, group) {
@@ -60,10 +46,14 @@ function PortfolioController($scope) {
 
   $scope.createPortfolio = function () {
     $scope.portfolio = [];
-    var settings = $scope.getSettings();
+    //var settings = getSettings();
+    var settings = [
+      {"qtAtivos":"2", "qtCarteiras":"1"}
+    ];
     for (var i = 0; i < settings.length; i++) {
       for (var i2 = 0; i2 < settings[i].qtCarteiras ; i2++) {
         var newGroup = createAssetGroup(settings[i].qtAtivos);
+        // todo: create a validation for non repeated groups
         $scope.portfolio.push(newGroup);
       }
     }
