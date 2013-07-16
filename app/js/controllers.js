@@ -24,11 +24,25 @@ function SettingsController($scope) {
     return $scope.settings;
   };
 
+  $scope.iterateSettings = function () {
+    for (var i = 0; i < $scope.settings.length; i++) {
+      alert($scope.settings[i].qtAtivos);
+    }
+  };
+
 };
 
 function PortfolioController($scope) {
   $scope.getSettings = function () {
+    alert("Trigged");
     return SettingsController.getSettings();
+  };
+
+  $scope.iterateSettings = function () {
+    var settings = $scope.getSettings();
+    for (var i = 0; i < settings.length; i++) {
+      alert(settings[i].qtAtivos);
+    }
   };
 
   function createAssetGroup(group_length, group) {

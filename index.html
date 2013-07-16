@@ -51,7 +51,7 @@
 
     <!-- tabela de resultados -->
     <div id="results" ng-controller="PortfolioController">
-      <button class="btn" ng-click="createPortfolio()">Show</button>
+      <button class="btn" ng-click="iterateSettings()">Show</button>
       <button class="btn" ng-click="createPortfolio()">Gerar carteiras</button>
       <ul ng-repeat="group in portfolio">
         <li>{{group.join()}}</li>
