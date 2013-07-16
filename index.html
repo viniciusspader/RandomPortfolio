@@ -18,21 +18,19 @@
             <div class="control-group">
               <label class="control-label" for="qtCarteiras" min="1">Qt de carteiras</label>
               <div class="controls">
-                <input type="number" id="qtCarteiras" min="1" value="1"
-                        ng-model="settings.qtCarteiras">
+                <input type="number" id="qtCarteiras" min="1" value="1">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="qtAtivos">Qt de ativos</label>
               <div class="controls">
-                <input type="number" id="qtAtivos" min="1" value="1"
-                        ng-model="settings.qtAtivos">
+                <input type="number" id="qtAtivos" min="1" value="1">
               </div>
             </div>
             <div class="control-group">
               <div class="controls">
                 <button class="btn btn-success" id="addConfig"
-                        ng-click="addSetting()">Adicionar</button>
+                        ng-click="addSetting(1,2)">Adicionar</button>
               </div>
             </div>
           </fieldset>
@@ -48,16 +46,16 @@
           </li>
         </ul>
       </div>
+      <button class="btn btn-error" ng-click="iterateSettings()">Show</button>
     </div>
 
     <!-- tabela de resultados -->
     <div id="results" ng-controller="PortfolioController">
-      <ul>
-        <li ng-repeat="setting in settings">
-          {{setting.qtCarteiras}}
-        </li>
+      <button class="btn" ng-click="createPortfolio()">Show</button>
+      <button class="btn" ng-click="createPortfolio()">Gerar carteiras</button>
+      <ul ng-repeat="group in portfolio">
+        <li>{{group.join()}}</li>
       </ul>
-      <button ng-click="createPortfolio()">Mostrar carteiras</button>
     </div>
     <!-- angular -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>

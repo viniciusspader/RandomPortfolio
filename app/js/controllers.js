@@ -1,10 +1,12 @@
 'use strict'
 
+var myApp = angular.module('RandomPortfolio', [])
+
 function SettingsController($scope) {
   $scope.settings = [];
 
-  function setting(ativos, carteiras) {
-    //this.index = $scope.settings.length;
+  function Setting(ativos, carteiras) {
+    // todo: add an index
     this.qtAtivos = ativos;
     this.qtCarteiras = carteiras;
   };
@@ -13,13 +15,15 @@ function SettingsController($scope) {
     $scope.settings.splice($scope.settings.indexOf(setting), 1);
   };
 
-  $scope.addSetting = function () {
-    $scope.settings.push(new setting($scope.settings.qtAtivos, $scope.settings.qtCarteiras));
+  $scope.addSetting = function (ativos, carteiras) {
+    var newSetting = new Setting(ativos, carteiras);
+    $scope.settings.push(newSetting);
   };
 
   $scope.getSettings = function () {
     return $scope.settings;
   };
+
 };
 
 function PortfolioController($scope) {
@@ -27,21 +31,28 @@ function PortfolioController($scope) {
     return SettingsController.getSettings();
   };
 
-  $scope.settings = $scope.getSettings();
-
-  $scope.portfolio = [];
-
-  function asset() {
-    return Math.floor(Math.random()*61)
-  }
-
-  function createAssetGroup(group_length) {
-    var group = [];
-    if (group.length < group_length) {
-      group.push(new asset());
-      createAssetGroup(group_length);
+  function createAssetGroup(group_length, group) {
+    var groupStorage = group || [];
+    if (groupStorage.length < group_length) {
+      // todo: create a method to create a new asset
+      var newAsset = Math.floor(Math.random() * 61);
+      if (groupStorage.indexOf(newAsset) < 0) {
+        groupStorage.push(newAsset);
+      }
+      createAssetGroup(group_length, groupStorage);
     }
-    return group;
+    return groupStorage;
+  };
+
+  $scope.createPortfolio = function () {
+    $scope.portfolio = [];
+    var settings = $scope.getSettings();
+    for (var i = 0; i < settings.length; i++) {
+      for (var i2 = 0; i2 < settings[i].qtCarteiras ; i2++) {
+        var newGroup = createAssetGroup(settings[i].qtAtivos);
+        $scope.portfolio.push(newGroup);
+      }
+    }
   };
 
 };
