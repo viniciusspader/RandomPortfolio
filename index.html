@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="RandomPortfolio">
   <head>
     <meta charset="utf-8" />
     <title>Portfolios Aleatorios</title>
@@ -39,7 +39,7 @@
       <div class="span8" id="config_settings">
         <h2>Definição de Carteiras</h1>
         <ul>
-          <li ng-repeat="setting in settings">
+          <li ng-repeat="setting in settingsModel.settings">
           {{setting.qtCarteiras}} carteira(s) 
           com {{setting.qtAtivos}} ativo(s) cada.
           <a href="" ng-click="removeSetting(setting)">Remover</a>
@@ -60,6 +60,9 @@
     <!-- bootstrap javascripts -->
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <!-- custom javascripts -->
+    <script src="app/js/app.js"></script>
+    <!-- 
     <script src="app/js/controllers.js"></script>
+    -->
   </body>
 </html>
