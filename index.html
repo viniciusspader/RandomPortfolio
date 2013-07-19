@@ -7,7 +7,7 @@
     <!-- styles -->
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
-  <body ng-controller="SettingsController">
+  <body ng-controller="PortfolioController">
 
     <div class="row-fluid">
       <div class="span4" id="config_form">
@@ -51,7 +51,7 @@
     <!-- tabela de resultados -->
     <div id="results">
       <h3>Carteiras</h3>
-      <table class="table   table-condensed" style="margin:20px">
+      <table class="table table-condensed" style="margin:20px">
         <tbody>
           <tr ng-repeat="group in portfolio">
             <td ng-repeat="item in group">{{item}}</td>
