@@ -18,19 +18,21 @@
             <div class="control-group">
               <label class="control-label" for="qtCarteiras" min="1">Qt de carteiras</label>
               <div class="controls">
-                <input type="number" id="qtCarteiras" min="1" value="1">
+                <input type="number" id="qtCarteiras" min="1" value="1"
+                        ng-model="carteiras">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="qtAtivos">Qt de ativos</label>
               <div class="controls">
-                <input type="number" id="qtAtivos" min="1" value="1">
+                <input type="number" id="qtAtivos" min="1" value="1"
+                        ng-model="ativos">
               </div>
             </div>
             <div class="control-group">
               <div class="controls">
                 <button class="btn btn-success" id="addConfig"
-                        ng-click="addSetting(2,1)">Adicionar</button>
+                        ng-click="addSetting()">Adicionar</button>
               </div>
             </div>
           </fieldset>
@@ -39,7 +41,7 @@
       <div class="span8" id="config_settings">
         <h2>Definição de Carteiras</h1>
         <ul>
-          <li ng-repeat="setting in settingsModel.settings">
+          <li ng-repeat="setting in settings">
           {{setting.qtCarteiras}} carteira(s) 
           com {{setting.qtAtivos}} ativo(s) cada.
           <a href="" ng-click="removeSetting(setting)">Remover</a>

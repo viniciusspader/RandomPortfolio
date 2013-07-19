@@ -23,10 +23,12 @@ RandomPortfolio.controller(
                 "SettingsController",
                 function ($scope, settingsModel) {
   
-  $scope.settings = settingsModel;
+  $scope.settings = settingsModel.settings;
+  $scope.ativos;
+  $scope.carteiras;
 
-  $scope.addSetting = function (ativos, carteiras) {
-    settingsModel.addSetting(ativos, carteiras);
+  $scope.addSetting = function () {
+    settingsModel.addSetting($scope.ativos, $scope.carteiras);
   };
 
   $scope.removeSetting = function (setting) {
@@ -39,7 +41,7 @@ RandomPortfolio.controller(
                 "PortfolioController",
                 function ($scope, settingsModel) {
 
-  $scope.settings = settingsModel;
+  $scope.settings = settingsModel.settings;
 
   function createAssetGroup(group_length, group) {
     var groupStorage = group || [];
@@ -69,7 +71,7 @@ RandomPortfolio.controller(
 
 RandomPortfolio.service('settingsModel', function () {
 
-  var settings = [{"qtAtivos":"2", "qtCarteiras":"2"}];
+  this.settings = [{"qtAtivos":"3", "qtCarteiras":"2"}];
 
   function Setting(ativos, carteiras) {
     // todo: add an index
@@ -78,12 +80,17 @@ RandomPortfolio.service('settingsModel', function () {
   };
 
   this.removeSetting = function (setting) {
-    settings.splice(settings.indexOf(setting), 1);
+    this.settings.splice(this.settings.indexOf(setting), 1);
   };
 
   this.addSetting = function (ativos, carteiras) {
     var newSetting = new Setting(ativos, carteiras);
-    settings.push(newSetting);
+    //alert(newSetting.qtAtivos);
+    this.settings.push(newSetting);
+    /*
+    alert(this.settings[0].qtAtivos);
+    alert(this.settings[1].qtAtivos);
+    */
   };
 
 });
