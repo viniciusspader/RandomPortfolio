@@ -7,9 +7,9 @@
     <!-- styles -->
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
-  <body>
+  <body ng-controller="SettingsController">
 
-    <div class="row-fluid" ng-controller="SettingsController">
+    <div class="row-fluid">
       <div class="span4" id="config_form">
         <!-- formulario para definição do número de carteiras -->
         <form class="form-horizontal">
@@ -49,7 +49,7 @@
     </div>
 
     <!-- tabela de resultados -->
-    <div id="results" ng-controller="PortfolioController">
+    <div id="results">
       <h3>Carteiras</h3>
       <table class="table   table-condensed" style="margin:20px">
         <tbody>

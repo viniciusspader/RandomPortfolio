@@ -2,29 +2,11 @@ var RandomPortfolio = angular.module('RandomPortfolio', []);
 
 RandomPortfolio.controller(
                 "SettingsController",
-                function ($scope, $rootScope, settingsModel) {
+                function ($scope, settingsModel) {
   
   $scope.settings = settingsModel.settings;
   $scope.ativos = 1;
   $scope.carteiras = 1;
-
-  $scope.addSetting = function () {
-    settingsModel.addSetting($scope.ativos, $scope.carteiras);
-    $rootScope.$broadcast('changePortfolio');
-  };
-
-  $scope.removeSetting = function (setting) {
-    settingsModel.removeSetting(setting);
-    $rootScope.$broadcast('changePortfolio');
-  };
-
-});
-
-RandomPortfolio.controller(
-                "PortfolioController",
-                function ($scope, settingsModel) {
-
-  $scope.settings = settingsModel.settings;
 
   function createAssetGroup(group_length, group) {
     var groupStorage = group || [];
@@ -39,6 +21,16 @@ RandomPortfolio.controller(
     return groupStorage;
   };
 
+  $scope.addSetting = function () {
+    settingsModel.addSetting($scope.ativos, $scope.carteiras);
+    $scope.createPortfolio();
+  };
+
+  $scope.removeSetting = function (setting) {
+    settingsModel.removeSetting(setting);
+    $scope.createPortfolio();
+  };
+
   $scope.createPortfolio = function () {
     $scope.portfolio = [];
     var settings = $scope.settings;
@@ -51,9 +43,6 @@ RandomPortfolio.controller(
     }
   };
 
-  $scope.$on('changePortfolio', function () {
-    $scope.createPortfolio();
-  });
 });
 
 RandomPortfolio.service('settingsModel', function () {
