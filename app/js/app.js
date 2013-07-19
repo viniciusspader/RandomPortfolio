@@ -1,38 +1,21 @@
 var RandomPortfolio = angular.module('RandomPortfolio', []);
 
-/*
-RandomPortfolio.config(
-                function ($routeProvider) {
-  
-  $routeProvider
-  .when('/',
-    {
-      controller:  'SettingsController',
-      templateUrl: 'index.html'
-    }
-  )
-  .otherwise(
-    {
-      redirectTo: '/'
-    }
-  )
-});
-*/
-
 RandomPortfolio.controller(
                 "SettingsController",
-                function ($scope, settingsModel) {
+                function ($scope, $rootScope, settingsModel) {
   
   $scope.settings = settingsModel.settings;
-  $scope.ativos;
-  $scope.carteiras;
+  $scope.ativos = 1;
+  $scope.carteiras = 1;
 
   $scope.addSetting = function () {
     settingsModel.addSetting($scope.ativos, $scope.carteiras);
+    $rootScope.$broadcast('changePortfolio');
   };
 
   $scope.removeSetting = function (setting) {
     settingsModel.removeSetting(setting);
+    $rootScope.$broadcast('changePortfolio');
   };
 
 });
@@ -66,12 +49,16 @@ RandomPortfolio.controller(
         $scope.portfolio.push(newGroup);
       }
     }
-  };                                              
+  };
+
+  $scope.$on('changePortfolio', function () {
+    $scope.createPortfolio();
+  });
 });
 
 RandomPortfolio.service('settingsModel', function () {
 
-  this.settings = [{"qtAtivos":"3", "qtCarteiras":"2"}];
+  this.settings = [];
 
   function Setting(ativos, carteiras) {
     // todo: add an index
@@ -85,12 +72,7 @@ RandomPortfolio.service('settingsModel', function () {
 
   this.addSetting = function (ativos, carteiras) {
     var newSetting = new Setting(ativos, carteiras);
-    //alert(newSetting.qtAtivos);
     this.settings.push(newSetting);
-    /*
-    alert(this.settings[0].qtAtivos);
-    alert(this.settings[1].qtAtivos);
-    */
   };
 
 });

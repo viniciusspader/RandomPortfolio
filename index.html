@@ -14,19 +14,17 @@
         <!-- formulario para definição do número de carteiras -->
         <form class="form-horizontal">
           <fieldset>
-            <legend>Configure a carteira a ser gerada</legend>
+            <legend>Adicione as carteiras a serem geradas</legend>
             <div class="control-group">
               <label class="control-label" for="qtCarteiras" min="1">Qt de carteiras</label>
               <div class="controls">
-                <input type="number" id="qtCarteiras" min="1" value="1"
-                        ng-model="carteiras">
+                <input type="number" id="qtCarteiras" min="1" ng-model="carteiras">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="qtAtivos">Qt de ativos</label>
               <div class="controls">
-                <input type="number" id="qtAtivos" min="1" value="1"
-                        ng-model="ativos">
+                <input type="number" id="qtAtivos" min="1" ng-model="ativos">
               </div>
             </div>
             <div class="control-group">
@@ -52,10 +50,19 @@
 
     <!-- tabela de resultados -->
     <div id="results" ng-controller="PortfolioController">
-      <button class="btn" ng-click="createPortfolio()">Gerar carteiras</button>
+      <h3>Carteiras</h3>
+      <table class="table   table-condensed" style="margin:20px">
+        <tbody>
+          <tr ng-repeat="group in portfolio">
+            <td ng-repeat="item in group">{{item}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!--
       <ul ng-repeat="group in portfolio">
         <li>{{group.join()}}</li>
       </ul>
+      -->
     </div>
     <!-- angular -->
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
