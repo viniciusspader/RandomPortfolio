@@ -50,7 +50,11 @@
 
     <!-- tabela de resultados -->
     <div id="results">
-      <h3>Carteiras</h3>
+      <div>
+        <h3 style="display: inline;">Carteiras</h3>
+        <button ng-click="exportPortfolio()" class="btn">Exportar para csv</button>  
+      </div>
+      
       <table class="table table-condensed" style="margin:20px">
         <tbody>
           <tr ng-repeat="group in portfolio">
@@ -70,8 +74,5 @@
     <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <!-- custom javascripts -->
     <script src="app/js/app.js"></script>
-    <!-- 
-    <script src="app/js/controllers.js"></script>
-    -->
   </body>
 </html>

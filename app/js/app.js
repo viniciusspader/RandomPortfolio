@@ -50,4 +50,22 @@ RandomPortfolio.controller(
     }
   };
 
+  $scope.exportPortfolio = function () {
+    var data = $scope.portfolio;
+    var csvContent = "data:text/csv;charset=utf-8,";
+    data.forEach(function(infoArray, index){
+
+    dataString = infoArray.join(";");
+    csvContent += index < infoArray.length ? dataString + "\n" : dataString;
+
+    var encodedUri = encodeURI(csvContent);
+
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "portfolio.csv");
+    link.click(); // This will download the data file named "my_data.csv"
+
+}); 
+  };
+
 });
