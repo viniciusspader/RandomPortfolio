@@ -1,0 +1,24 @@
+{
+  "name": "RandomPortfolio",
+  "version": "0.0.0",
+  "description": "Random generated assets portfolios",
+  "main": "web.js",
+  "dependencies": {
+    "node-static": "~0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/viniciusspader/RandomPortfolio.git"
+  },
+  "author": "viniciusspader",
+  "license": "BSD",
+  "gitHead": "ef13ae04d332c69424e998d47becb0976527fe01",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/viniciusspader/RandomPortfolio/issues"
+  }
+}
