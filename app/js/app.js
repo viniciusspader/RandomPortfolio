@@ -1,14 +1,15 @@
 var RandomPortfolio = angular.module('RandomPortfolio', []);
 
-RandomPortfolio.config(['$routeProvider', function ($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'index.html',
-                              controller:'PortfolioController'});
+RandomPortfolio.config(
+                  ['$routeProvider', function ($routeProvider) {
+  $routeProvider.when('/', {templateUrl: 'app/index.html'});
 }]);
 
 RandomPortfolio.controller(
                 "PortfolioController",
-                function ($scope) {
+                function ($scope, $route) {
   
+  $scope.$route = $route;
   $scope.settings = [];
   $scope.ativos = 1;
   $scope.carteiras = 1;
